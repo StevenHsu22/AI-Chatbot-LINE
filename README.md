@@ -1,9 +1,12 @@
 # AI-Chatbot with LINE
 
+自分用の日本語学習 ＆ AI 活用実験
+
 ## Table of Contents
 
-1. [Setup & Usage](#Setup & Usage)
-2. [Directory structure](#Directory structure)
+1. [Setup & Usage](#setup--usage)
+2. [Directory structure](#directory-structure)
+3. [To do](#to-do)
 
 ## Setup & Usage
 
@@ -17,7 +20,7 @@ write github wiki
 
 ```
 
-line-llm-bot/                  # Project root directory
+AI-Chatbot-LINE/               # Project root directory
 ├── .env                       # Environment variables configuration file
 ├── .env.example               # Example environment variables file
 ├── .gitignore                 # Git ignore file
@@ -61,3 +64,7 @@ line-llm-bot/                  # Project root directory
     ├── test_line_bot.py
     └── test_llm.py
 ```
+
+## To do
+
+SQLAlchemy
