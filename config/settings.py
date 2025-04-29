@@ -23,6 +23,9 @@ if LINE_CHANNEL_SECRET is None:
 LLM_API_KEY = os.getenv("LLM_API_KEY")
 LLM_API_BASE_URL = os.getenv("LLM_API_BASE_URL")
 
+# Base URL for the application
+BASE_URL = os.getenv("BASE_URL", "http://localhost:8000")
+
 # AWS Configuration
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
 AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")

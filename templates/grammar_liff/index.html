@@ -3,25 +3,145 @@
 {% block title %}文法入力{% endblock %}
 
 {% block content %}
-<h1 class="text-xl font-bold mb-4">文法の登録</h1>
+<h1 class="text-2xl font-bold mb-6 text-blue-800 text-center">文法の登録</h1>
 
-<form id="grammar-form" class="space-y-4">
-  <input type="text" id="title" placeholder="文法名" class="w-full border p-2 rounded" required />
-  <textarea id="description" placeholder="説明" class="w-full border p-2 rounded" rows="3"></textarea>
-  <textarea id="example" placeholder="例文" class="w-full border p-2 rounded" rows="2"></textarea>
-  <input type="text" id="synonyms" placeholder="類義語" class="w-full border p-2 rounded" />
-  <textarea id="memo" placeholder="メモ" class="w-full border p-2 rounded" rows="2"></textarea>
-
-  <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-    保存
+<!-- 文法入力欄 -->
+<div class="relative flex items-center mb-6">
+  <div class="relative flex-grow">
+    <!-- 検索アイコン（常に表示） -->
+    <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+      </svg>
+    </div>
+    
+    <!-- クリアボタン（テキストがある場合のみ表示） -->
+    <div id="clear-btn" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </div>
+    
+    <!-- 文法入力フィールド -->
+    <input type="text" id="grammar-input" placeholder="例：〜ている" class="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-md" />
+  </div>
+  
+  <!-- 生成ボタン（深い青色の円形、カスタム画像） -->
+  <button id="generate-btn" class="ml-2 bg-blue-800 hover:bg-blue-900 text-white rounded-full w-10 h-10 flex items-center justify-center transition shadow-md">
+    <!-- 通常時の画像 -->
+    <img id="btn-normal-img" src="/static/icon/magic_wand.png" alt="生成" class="h-5 w-5" />
+    
+    <!-- ローディング時の画像（最初は非表示） -->
+    <img id="btn-loading-img" src="/static/icon/loading.gif" alt="読み込み中" class="h-5 w-5 hidden animate-spin" />
   </button>
-</form>
+</div>
 
-<p id="message" class="mt-4 text-green-600 font-semibold hidden">保存しました！</p>
+<!-- grammar form -->
+<div id="grammar-container" class="bg-white shadow-lg rounded-xl p-6 space-y-5 hidden">
+  <form id="grammar-form" class="space-y-4">
+
+    <div>
+      <label for="title" class="block font-semibold text-gray-700 mb-1">文法</label>
+      <input type="text" id="title" class="w-full border border-gray-300 p-2 rounded-2xl" required />
+    </div>
+
+    <div>
+      <label for="description" class="block font-semibold text-gray-700 mb-1">説明</label>
+      <textarea id="description" class="w-full border border-gray-300 p-2 rounded-2xl" rows="3"></textarea>
+    </div>
+
+    <div>
+      <label for="example" class="block font-semibold text-gray-700 mb-1">例文</label>
+      <textarea id="example" class="w-full border border-gray-300 p-2 rounded-2xl" rows="2"></textarea>
+    </div>
+
+    <div>
+      <label for="synonyms" class="block font-semibold text-gray-700 mb-1">類義語</label>
+      <input type="text" id="synonyms" class="w-full border border-gray-300 p-2 rounded-2xl" />
+    </div>
+
+    <div>
+      <label for="memo" class="block font-semibold text-gray-700 mb-1">メモ</label>
+      <textarea id="memo" class="w-full border border-gray-300 p-2 rounded-2xl" rows="2"></textarea>
+    </div>
+
+    <button type="submit" class="w-full bg-blue-700 text-white font-semibold py-2 px-4 rounded hover:bg-blue-800 transition duration-200 rounded-2xl">
+      保存
+    </button>
+  </form>
+
+  <p id="message" class="text-center mt-4 text-green-600 font-semibold hidden">保存しました！</p>
+</div>
 
 <script>
+  const grammarInput = document.getElementById("grammar-input");
+  const generateBtn = document.getElementById("generate-btn");
+  const grammarContainer = document.getElementById("grammar-container");
+  const clearBtn = document.getElementById("clear-btn");
+
+  // 入力フィールドの変更を監視して、クリアボタンの表示/非表示を切り替える
+  grammarInput.addEventListener("input", () => {
+    if (grammarInput.value.trim()) {
+      clearBtn.classList.remove("hidden");
+    } else {
+      clearBtn.classList.add("hidden");
+    }
+  });
+
+  // クリアボタンのクリックイベント
+  clearBtn.addEventListener("click", () => {
+    grammarInput.value = "";
+    clearBtn.classList.add("hidden");
+    grammarInput.focus();
+  });
+
+  generateBtn.addEventListener("click", async () => {
+    const keyword = grammarInput.value.trim();
+    if (!keyword) {
+      alert("文法名を入力してください");
+      return;
+    }
+
+    generateBtn.disabled = true;
+    
+    // ボタン画像の切り替え（通常→ローディング）
+    document.getElementById("btn-normal-img").classList.add("hidden");
+    document.getElementById("btn-loading-img").classList.remove("hidden");
+
+    try {
+      const res = await fetch("/api/grammar/generate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ keyword }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+
+        document.getElementById("title").value = data.title || "";
+        document.getElementById("description").value = data.description || "";
+        document.getElementById("example").value = data.example || "";
+        document.getElementById("synonyms").value = data.synonyms || "";
+        document.getElementById("memo").value = data.memo || "";
+
+        grammarContainer.classList.remove("hidden");
+      } else {
+        alert("生成失敗しました");
+      }
+    } catch (e) {
+      alert("エラー：" + e.message);
+    } finally {
+      generateBtn.disabled = false;
+      // ボタン画像を元に戻す（ローディング→通常）
+      document.getElementById("btn-loading-img").classList.add("hidden");
+      document.getElementById("btn-normal-img").classList.remove("hidden");
+    }
+  });
+
   document.getElementById("grammar-form").addEventListener("submit", async (e) => {
     e.preventDefault();
+    const confirmSave = confirm("保存してもよろしいですか？");
+    if (!confirmSave) return;
 
     const payload = {
       title: document.getElementById("title").value,
@@ -39,14 +159,24 @@
       });
 
       if (response.ok) {
-        document.getElementById("message").classList.remove("hidden");
+        const msg = document.getElementById("message");
+        msg.classList.remove("hidden");
+
+        document.getElementById('grammar-input').value = '';
+        clearBtn.classList.add("hidden");
+
         document.getElementById("grammar-form").reset();
+
+        document.getElementById("grammar-container").classList.add("hidden");
+
+        setTimeout(() => msg.classList.add("hidden"), 3000);
       } else {
-        alert("エラーが発生しました");
+        alert("保存失敗");
       }
     } catch (error) {
       alert("通信エラー：" + error);
     }
   });
+
 </script>
 {% endblock %}

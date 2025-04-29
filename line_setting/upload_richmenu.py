@@ -30,7 +30,7 @@ def add_project_root_to_sys_path():
 
 add_project_root_to_sys_path()
 
-from config.settings import LINE_CHANNEL_ACCESS_TOKEN  # noqa: E402
+from config.settings import LINE_CHANNEL_ACCESS_TOKEN, BASE_URL  # noqa: E402
 
 logging.basicConfig(level=logging.INFO)
 
@@ -52,7 +52,10 @@ def rich_menu_object_a_json():
             # 2. 文法
             {
                 "bounds": {"x": 266, "y": 0, "width": 266, "height": 270},
-                "action": {"type": "message", "text": "文法を保存"},
+                "action": {
+                    "type": "uri",
+                    "uri": f"{BASE_URL}/liff/grammar"
+                },
             },
             # 3. 画像
             {
