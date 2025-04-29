@@ -10,11 +10,7 @@
 
 ## Setup & Usage
 
-write github wiki 
-
-```bash
-
-```
+Visit the wiki for [Setup](https://github.com/StevenHsu22/AI-Chatbot-LINE/wiki)
 
 ## Directory structure
 
@@ -43,6 +39,10 @@ AI-Chatbot-LINE/               # Project root directory
 │   ├── client.py              # LINE API client
 │   ├── handlers.py            # Message handlers
 │   └── models.py              # LINE related data models
+├── line_setting/              # LINE Bot API usage
+│   ├── __init__.py
+│   ├── line_api_test.py
+│   └── upload_richmenu.py     # Upload LINE bot rich menu
 ├── llm/                       # LLM related modules
 │   ├── __init__.py
 │   ├── client.py              # LLM API client
@@ -52,6 +52,8 @@ AI-Chatbot-LINE/               # Project root directory
 │   ├── __init__.py
 │   ├── message_service.py     # Message processing service
 │   └── conversation_service.py # Conversation management service
+├── static/
+│   └── images/
 ├── utils/                     # Utility functions
 │   ├── __init__.py
 │   ├── logger.py              # Logging tools
@@ -59,6 +61,9 @@ AI-Chatbot-LINE/               # Project root directory
 ├── data/                      # Data storage directory
 │   ├── conversations/         # Conversation history
 │   └── logs/                  # Log files
+├── templates/
+│   ├── grammar_liff/          # grammar html
+│   └── word_liff/             # word html
 └── tests/                     # Test directory
     ├── __init__.py
     ├── test_line_bot.py
