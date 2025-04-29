@@ -1,0 +1,52 @@
+{% extends "grammar_liff/base.html" %}
+
+{% block title %}文法入力{% endblock %}
+
+{% block content %}
+<h1 class="text-xl font-bold mb-4">文法の登録</h1>
+
+<form id="grammar-form" class="space-y-4">
+  <input type="text" id="title" placeholder="文法名" class="w-full border p-2 rounded" required />
+  <textarea id="description" placeholder="説明" class="w-full border p-2 rounded" rows="3"></textarea>
+  <textarea id="example" placeholder="例文" class="w-full border p-2 rounded" rows="2"></textarea>
+  <input type="text" id="synonyms" placeholder="類義語" class="w-full border p-2 rounded" />
+  <textarea id="memo" placeholder="メモ" class="w-full border p-2 rounded" rows="2"></textarea>
+
+  <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
+    保存
+  </button>
+</form>
+
+<p id="message" class="mt-4 text-green-600 font-semibold hidden">保存しました！</p>
+
+<script>
+  document.getElementById("grammar-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const payload = {
+      title: document.getElementById("title").value,
+      description: document.getElementById("description").value,
+      example: document.getElementById("example").value,
+      synonyms: document.getElementById("synonyms").value,
+      memo: document.getElementById("memo").value,
+    };
+
+    try {
+      const response = await fetch("/api/grammar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        document.getElementById("message").classList.remove("hidden");
+        document.getElementById("grammar-form").reset();
+      } else {
+        alert("エラーが発生しました");
+      }
+    } catch (error) {
+      alert("通信エラー：" + error);
+    }
+  });
+</script>
+{% endblock %}

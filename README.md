@@ -25,6 +25,9 @@ AI-Chatbot-LINE/               # Project root directory
 ├── app.py                     # Main application entry point
 ├── Dockerfile                 # Docker build file
 ├── docker-compose.yml         # Docker Compose configuration file
+├── api/
+│   ├── __init__.py
+│   └── grammar.py             # grammar api
 ├── scripts/                   # Scripts directory
 │   ├── start.sh               # Service start script
 │   ├── stop.sh                # Service stop script
@@ -62,8 +65,7 @@ AI-Chatbot-LINE/               # Project root directory
 │   ├── conversations/         # Conversation history
 │   └── logs/                  # Log files
 ├── templates/
-│   ├── grammar_liff/          # grammar html
-│   └── word_liff/             # word html
+│   └── grammar_liff/          # grammar html
 └── tests/                     # Test directory
     ├── __init__.py
     ├── test_line_bot.py
