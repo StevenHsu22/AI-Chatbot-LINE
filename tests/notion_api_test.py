@@ -83,7 +83,7 @@ def main():
                 **{
                     "parent": {"database_id": database_id},
                     "properties": {
-                      "\u6587\u6cd5": {
+                      "文法": {
                         "title": [
                           {
                             "text": {
@@ -92,7 +92,7 @@ def main():
                           }
                         ]
                       },
-                      "\u8aac\u660e": {
+                      "説明": {
                         "rich_text": [
                           {
                             "text": {
@@ -101,7 +101,7 @@ def main():
                           }
                         ]
                       },
-                      "\u4f8b\u6587": {
+                      "例文": {
                         "rich_text": [
                           {
                             "text": {
@@ -110,7 +110,7 @@ def main():
                           }
                         ]
                       },
-                      "\u985e\u4f3c\u6587\u6cd5": {
+                      "類似文法": {
                         "rich_text": [
                           {
                             "text": {
@@ -119,7 +119,7 @@ def main():
                           }
                         ]
                       },
-                      "\u30e1\u30e2": {
+                      "メモ": {
                         "rich_text": [
                           {
                             "text": {
@@ -128,7 +128,7 @@ def main():
                           }
                         ]
                       },
-                      "\u5b8c\u4e86": {
+                      "完了": {
                         "checkbox": False
                       }
                     },
