@@ -19,6 +19,20 @@ if LINE_CHANNEL_SECRET is None:
     )
     sys.exit(1)
 
+# Notion Configuration
+NOTION_API_KEY = os.getenv("NOTION_API_KEY")
+NOTION_DATABASE_ID = os.getenv("NOTION_DATABASE_ID")
+if NOTION_API_KEY is None:
+    sys.stderr.write(
+      "Specify NOTION_API_KEY as environment variable.\n"
+    )
+    sys.exit(1)
+if NOTION_DATABASE_ID is None:
+    sys.stderr.write(
+      "Specify NOTION_DATABASE_ID as environment variable.\n"
+    )
+    sys.exit(1)
+
 # LLM Configuration
 LLM_API_KEY = os.getenv("LLM_API_KEY")
 LLM_API_BASE_URL = os.getenv("LLM_API_BASE_URL")
