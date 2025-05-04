@@ -74,6 +74,7 @@ AI-Chatbot-LINE/               # Project root directory
 
 ## To do
 
+0. LINE parse message
 1. connect with db (SQLAlchemy)
 2. image generate (grok)
 3. pdf reading (faiss)
