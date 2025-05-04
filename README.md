@@ -74,4 +74,6 @@ AI-Chatbot-LINE/               # Project root directory
 
 ## To do
 
-SQLAlchemy
+1. connect with db (SQLAlchemy)
+2. image generate (grok)
+3. pdf reading (faiss)

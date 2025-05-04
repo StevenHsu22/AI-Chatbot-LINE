@@ -2,8 +2,8 @@
 # https://github.com/line/line-bot-sdk-python/blob/e49111f64fb6c436480d184b9e9f76df62f78602/examples/rich-menu/app.py#L146
 
 import logging
-import os
-import sys
+# import os
+# import sys
 
 from linebot.v3.messaging import (
     Configuration,
@@ -12,14 +12,14 @@ from linebot.v3.messaging import (
 )
 
 
-def add_project_root_to_sys_path():
-    current_path = os.path.dirname(__file__)
-    project_root = os.path.abspath(os.path.join(current_path, ".."))
-    if project_root not in sys.path:
-        sys.path.insert(0, project_root)
+# def add_project_root_to_sys_path():
+#     current_path = os.path.dirname(__file__)
+#     project_root = os.path.abspath(os.path.join(current_path, ".."))
+#     if project_root not in sys.path:
+#         sys.path.insert(0, project_root)
 
 
-add_project_root_to_sys_path()
+# add_project_root_to_sys_path()
 
 from config.settings import LINE_CHANNEL_ACCESS_TOKEN  # noqa: E402
 

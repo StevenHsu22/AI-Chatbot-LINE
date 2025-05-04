@@ -1,21 +1,9 @@
 # -*- coding: utf-8 -*-
 
 import logging
-import os
-import sys
 from typing import Any
 
 from notion_client import Client
-
-
-def add_project_root_to_sys_path():
-    current_path = os.path.dirname(__file__)
-    project_root = os.path.abspath(os.path.join(current_path, ".."))
-    if project_root not in sys.path:
-        sys.path.insert(0, project_root)
-
-
-add_project_root_to_sys_path()
 
 from config.settings import NOTION_API_KEY, NOTION_DATABASE_ID  # noqa: E402
 
@@ -28,7 +16,7 @@ logging.basicConfig(
 notion_database_id = NOTION_DATABASE_ID
 
 
-def save_grammar_to_notion(data: Any) -> None:
+async def save_grammar_to_notion(data: Any) -> None:
     """
     Save grammar data to Notion database.
     """
@@ -48,6 +36,9 @@ def save_grammar_to_notion(data: Any) -> None:
                     },
                     "例文": {
                         "rich_text": [{"text": {"content": data.example}}]
+                    },
+                    "接続方法": {
+                        "rich_text": [{"text": {"content": data.connection}}]
                     },
                     "類似文法": {
                         "rich_text": [{"text": {"content": data.synonyms}}]

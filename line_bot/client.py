@@ -1,15 +1,8 @@
-import sys
-import os
-
 from linebot.v3 import WebhookHandler
 from linebot.v3.messaging import (
     AsyncApiClient,
     ApiClient,
     Configuration,
-)
-
-sys.path.append(
-    os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 )
 
 from config.settings import (  # noqa: E402

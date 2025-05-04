@@ -56,6 +56,11 @@
     </div>
 
     <div>
+      <label for="connection" class="block font-semibold text-gray-700 mb-1">接続方法</label>
+      <textarea id="connection" class="w-full border border-gray-300 p-2 rounded-2xl" rows="3"></textarea>
+    </div>
+
+    <div>
       <label for="synonyms" class="block font-semibold text-gray-700 mb-1">類義語</label>
       <input type="text" id="synonyms" class="w-full border border-gray-300 p-2 rounded-2xl" />
     </div>
@@ -96,8 +101,8 @@
   });
 
   generateBtn.addEventListener("click", async () => {
-    const keyword = grammarInput.value.trim();
-    if (!keyword) {
+    const grammar = grammarInput.value.trim();
+    if (!grammar) {
       alert("文法名を入力してください");
       return;
     }
@@ -109,10 +114,10 @@
     document.getElementById("btn-loading-img").classList.remove("hidden");
 
     try {
-      const res = await fetch("/api/grammar/generate", {
+      const res = await fetch("/api/grammar/generate_grammar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ keyword }),
+        body: JSON.stringify({ grammar }),
       });
 
       if (res.ok) {
@@ -121,6 +126,7 @@
         document.getElementById("title").value = data.title || "";
         document.getElementById("description").value = data.description || "";
         document.getElementById("example").value = data.example || "";
+        document.getElementById("connection").value = data.connection || "";
         document.getElementById("synonyms").value = data.synonyms || "";
         document.getElementById("memo").value = data.memo || "";
 
@@ -147,12 +153,13 @@
       title: document.getElementById("title").value,
       description: document.getElementById("description").value,
       example: document.getElementById("example").value,
+      connection: document.getElementById("connection").value,
       synonyms: document.getElementById("synonyms").value,
       memo: document.getElementById("memo").value,
     };
 
     try {
-      const response = await fetch("/api/grammar", {
+      const response = await fetch("/api/grammar/save_grammar", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),

@@ -33,12 +33,20 @@ if NOTION_DATABASE_ID is None:
     )
     sys.exit(1)
 
+# Base URL for the application
+BASE_URL = os.getenv("BASE_URL", "http://localhost:8000")
+
 # LLM Configuration
 LLM_API_KEY = os.getenv("LLM_API_KEY")
 LLM_API_BASE_URL = os.getenv("LLM_API_BASE_URL")
 
-# Base URL for the application
-BASE_URL = os.getenv("BASE_URL", "http://localhost:8000")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4.1-nano")
+
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "deepseek-r1:7b")
+
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash-preview-04-17")
 
 # AWS Configuration
 AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")

@@ -1,0 +1,58 @@
+2025-05-04 14:39:15,647 - utils.logger - ERROR - Error initializing LLMClient: 'LLMClient' object has no attribute '_init_openai_models'
+2025-05-04 14:40:54,362 - utils.logger - ERROR - Error initializing LLMClient: 'LLMClient' object has no attribute '_init_openai_models'
+2025-05-04 14:41:01,344 - utils.logger - ERROR - Failed to initialize Azure models: 1 validation error for ChatOpenAI
+temperature
+  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='2023-07-01-preview', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/float_parsing
+2025-05-04 14:41:01,344 - utils.logger - ERROR - Failed to initialize Azure models: name 'AzureOpenAI' is not defined
+2025-05-04 14:41:01,344 - utils.logger - ERROR - Failed to initialize Vertex AI models: name 'VertexAI' is not defined
+2025-05-04 14:41:01,344 - utils.logger - ERROR - Failed to initialize Gemini models: name 'VertexAI' is not defined
+2025-05-04 14:41:01,345 - utils.logger - INFO - LLMClient initialized successfully
+2025-05-04 14:41:17,903 - utils.logger - ERROR - Failed to initialize Azure models: 1 validation error for ChatOpenAI
+temperature
+  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='2023-07-01-preview', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/float_parsing
+2025-05-04 14:41:17,903 - utils.logger - ERROR - Failed to initialize Azure models: name 'AzureOpenAI' is not defined
+2025-05-04 14:41:17,903 - utils.logger - ERROR - Failed to initialize Vertex AI models: name 'VertexAI' is not defined
+2025-05-04 14:41:17,903 - utils.logger - ERROR - Failed to initialize Gemini models: name 'VertexAI' is not defined
+2025-05-04 14:41:17,903 - utils.logger - INFO - LLMClient initialized successfully
+2025-05-04 14:41:20,138 - utils.logger - ERROR - Failed to initialize Azure models: 1 validation error for ChatOpenAI
+temperature
+  Input should be a valid number, unable to parse string as a number [type=float_parsing, input_value='2023-07-01-preview', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.11/v/float_parsing
+2025-05-04 14:41:20,138 - utils.logger - ERROR - Failed to initialize Azure models: name 'AzureOpenAI' is not defined
+2025-05-04 14:41:20,138 - utils.logger - ERROR - Failed to initialize Vertex AI models: name 'VertexAI' is not defined
+2025-05-04 14:41:20,138 - utils.logger - ERROR - Failed to initialize Gemini models: name 'VertexAI' is not defined
+2025-05-04 14:41:20,138 - utils.logger - INFO - LLMClient initialized successfully
+2025-05-04 14:42:46,201 - utils.logger - ERROR - Failed to initialize Azure models: name 'AzureOpenAI' is not defined
+2025-05-04 14:42:46,201 - utils.logger - ERROR - Failed to initialize Vertex AI models: name 'VertexAI' is not defined
+2025-05-04 14:42:46,201 - utils.logger - ERROR - Failed to initialize Gemini models: name 'VertexAI' is not defined
+2025-05-04 14:42:46,201 - utils.logger - INFO - LLMClient initialized successfully
+2025-05-04 14:42:49,709 - utils.logger - ERROR - Failed to initialize Azure models: name 'AzureOpenAI' is not defined
+2025-05-04 14:42:49,709 - utils.logger - ERROR - Failed to initialize Vertex AI models: name 'VertexAI' is not defined
+2025-05-04 14:42:49,709 - utils.logger - ERROR - Failed to initialize Gemini models: name 'VertexAI' is not defined
+2025-05-04 14:42:49,709 - utils.logger - INFO - LLMClient initialized successfully
+2025-05-04 14:42:55,199 - utils.logger - ERROR - Failed to initialize Azure models: name 'AzureOpenAI' is not defined
+2025-05-04 14:42:55,199 - utils.logger - ERROR - Failed to initialize Vertex AI models: name 'VertexAI' is not defined
+2025-05-04 14:42:55,199 - utils.logger - ERROR - Failed to initialize Gemini models: name 'VertexAI' is not defined
+2025-05-04 14:42:55,199 - utils.logger - INFO - LLMClient initialized successfully
+2025-05-04 15:18:26,789 - utils.logger - INFO - OpenAI models initialized successfully
+2025-05-04 15:18:26,798 - utils.logger - INFO - Ollama models initialized successfully
+2025-05-04 15:18:26,798 - utils.logger - INFO - LLMClient initialized successfully
+2025-05-04 15:18:27,390 - utils.logger - INFO - OpenAI models initialized successfully
+2025-05-04 15:18:27,399 - utils.logger - INFO - Ollama models initialized successfully
+2025-05-04 15:18:27,399 - utils.logger - INFO - LLMClient initialized successfully
+2025-05-04 15:19:41,668 - utils.logger - INFO - OpenAI models initialized successfully
+2025-05-04 15:19:41,677 - utils.logger - INFO - Ollama models initialized successfully
+2025-05-04 15:19:41,677 - utils.logger - INFO - LLMClient initialized successfully
+2025-05-04 15:22:30,771 - utils.logger - INFO - Grammar analysis result: title='にきまっている' description=' uncertain or partial knowledge expressed in Japanese grammar' example='知るにきまっている' connection='Adverb before the verb or noun it modifies' synonyms='にきmandiru, にきmattiru' memo="This construction is used to express uncertainty or partial knowledge in Japanese. For example, '知るにきまっている' means 'I know a little about.'"
+2025-05-04 15:24:35,091 - utils.logger - INFO - Grammar analysis result: title='形容词+动词' description='形容词+动词が表す文法' example='痛みに生じる' connection='形容词に动词を接続する' synonyms='～like/ly' memo='形容詞と动詞のbetween構造。形容詞が动詞の伴随状態を表す。'
+2025-05-04 15:30:05,757 - utils.logger - INFO - OpenAI models initialized successfully
+2025-05-04 15:30:05,766 - utils.logger - INFO - Ollama models initialized successfully
+2025-05-04 15:30:05,766 - utils.logger - INFO - LLMClient initialized successfully
+2025-05-04 15:30:22,897 - utils.logger - ERROR - Grammar analysis error: Error code: 429 - {'error': {'message': 'Your account is not active, please check your billing details on our website.', 'type': 'billing_not_active', 'param': None, 'code': 'billing_not_active'}}
+2025-05-04 15:39:30,584 - utils.logger - INFO - OpenAI models initialized successfully
+2025-05-04 15:39:30,592 - utils.logger - INFO - Ollama models initialized successfully
+2025-05-04 15:39:30,601 - utils.logger - INFO - Gemini model initialized successfully
+2025-05-04 15:39:30,601 - utils.logger - INFO - LLMClient initialized successfully
+2025-05-04 15:39:51,526 - utils.logger - INFO - Grammar analysis result: title='にきまっている' description='話し手が、ある事柄について強い確信を持って「〜であるはずだ」「〜にちがいない」と言うときに使う。根拠に基づいている場合もあるが、話し手の個人的な判断や推測が強い場合に使われることも多い。やや断定的な響きがあり、話し言葉でよく使われる。' example='「あんなに一生懸命練習したんだから、試合に勝つにきまっている。」' connection='動詞の普通形 + にきまっている\nい形容詞の普通形 + にきまっている\nな形容詞の語幹 + にきまっている\n名詞 + にきまっている' synonyms='〜はずだ、〜にちがいない' memo='「〜にちがいない」と似ているが、「にきまっている」の方が話し手の主観的な判断や強い感情がこもっていることが多い。また、少しくだけた印象を与える場合がある。否定形は「〜ないにきまっている」。'

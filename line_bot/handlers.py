@@ -2,13 +2,16 @@ from linebot.models import (
     MessageEvent,
     TextMessage,
     TextSendMessage,
-    ImageMessage,
-    AudioMessage,
-    VideoMessage,
+    # ImageMessage,
+    # AudioMessage,
+    # VideoMessage,
 )
 from line_bot.client import handler, line_bot_api
 from llm.client import get_llm_response
-from services.conversation_service import get_conversation_history, save_conversation
+from services.conversation_service import (
+    get_conversation_history,
+    save_conversation
+)
 from utils.logger import setup_logger
 
 logger = setup_logger()
@@ -31,7 +34,10 @@ def handle_text_message(event):
         save_conversation(user_id, message_text, response)
 
         # Reply to user
-        line_bot_api.reply_message(event.reply_token, TextSendMessage(text=response))
+        line_bot_api.reply_message(
+            event.reply_token,
+            TextSendMessage(text=response)
+        )
     except Exception as e:
         logger.error(f"Error handling text message: {e}")
         line_bot_api.reply_message(

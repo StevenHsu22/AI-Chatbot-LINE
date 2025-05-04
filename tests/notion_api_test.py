@@ -3,20 +3,20 @@
 # https://qiita.com/Yusuke_Pipipi/items/b44cb8442932019c52c9
 
 import logging
-import os
-import sys
+# import os
+# import sys
 
 from notion_client import Client
 
 
-def add_project_root_to_sys_path():
-    current_path = os.path.dirname(__file__)
-    project_root = os.path.abspath(os.path.join(current_path, ".."))
-    if project_root not in sys.path:
-        sys.path.insert(0, project_root)
+# def add_project_root_to_sys_path():
+#     current_path = os.path.dirname(__file__)
+#     project_root = os.path.abspath(os.path.join(current_path, ".."))
+#     if project_root not in sys.path:
+#         sys.path.insert(0, project_root)
 
 
-add_project_root_to_sys_path()
+# add_project_root_to_sys_path()
 
 from config.settings import NOTION_API_KEY, NOTION_DATABASE_ID  # noqa: E402
 
@@ -102,6 +102,15 @@ def main():
                         ]
                       },
                       "例文": {
+                        "rich_text": [
+                          {
+                            "text": {
+                              "content": "test"
+                            }
+                          }
+                        ]
+                      },
+                      "接続方法": {
                         "rich_text": [
                           {
                             "text": {

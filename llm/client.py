@@ -1,11 +1,12 @@
-from langchain.chat_models import ChatOpenAI, ChatVertexAI, ChatGoogleGenerativeAI
-from langchain.llms import AzureOpenAI, VertexAI
-from langchain.embeddings import VertexAIEmbeddings
+from langchain_openai import ChatOpenAI
+from langchain_ollama import ChatOllama
+from langchain_google_genai import ChatGoogleGenerativeAI
+
 from config.settings import (
-    AZURE_OPENAI_API_KEY,
-    AZURE_OPENAI_ENDPOINT,
-    GOOGLE_API_KEY,
-    GCP_PROJECT_ID,
+    OPENAI_MODEL,
+    OLLAMA_MODEL,
+    GEMINI_API_KEY,
+    GEMINI_MODEL,
 )
 from utils.logger import setup_logger
 
@@ -15,16 +16,12 @@ logger = setup_logger()
 class LLMClient:
     """class for accessing various LLM models"""
 
-    def __init__(self):
-        """Initialize AI models"""
+    def __init__(self, temperature=0.5):
+        self.temperature = temperature
+
         try:
-            # Initialize Azure OpenAI
-            self._init_azure_models()
-
-            # Initialize Google Vertex AI models
-            self._init_vertex_models()
-
-            # Initialize Google Generative AI models (Gemini)
+            self._init_openai_models()
+            self._init_ollama_models()
             self._init_gemini_models()
 
             logger.info("LLMClient initialized successfully")
@@ -32,94 +29,46 @@ class LLMClient:
             logger.error(f"Error initializing LLMClient: {e}")
             raise
 
-    def _init_azure_models(self):
-        """Initialize Azure OpenAI models"""
+    def _init_openai_models(self):
         try:
-            self.azure_openai_llm = AzureOpenAI(
-                deployment_name="gpt-35-turbo-instruct-model",
-                openai_api_version="2023-07-01-preview",
-                model_name="gpt-35-turbo-instruct",
-                azure_endpoint=AZURE_OPENAI_ENDPOINT,
-                api_key=AZURE_OPENAI_API_KEY,
+            self.openai_chat_model = ChatOpenAI(
+                model=OPENAI_MODEL,
+                temperature=self.temperature,
                 max_tokens=800,
             )
-
-            # Add Azure OpenAI chat model if needed
-            self.azure_openai_chat = ChatOpenAI(
-                deployment_name="gpt-4-model",
-                openai_api_version="2023-07-01-preview",
-                model_name="gpt-4",
-                azure_endpoint=AZURE_OPENAI_ENDPOINT,
-                api_key=AZURE_OPENAI_API_KEY,
-                max_tokens=1000,
-            )
+            logger.info("OpenAI models initialized successfully")
         except Exception as e:
-            logger.error(f"Failed to initialize Azure models: {e}")
-            # Consider whether to raise or continue with partial initialization
+            logger.error(f"Failed to initialize OpenAI models: {e}")
 
-    def _init_vertex_models(self):
-        """Initialize Google Vertex AI models"""
+    def _init_ollama_models(self):
         try:
-            # Text models
-            self.palm_llm = VertexAI(
-                project=GCP_PROJECT_ID,
-                model_name="text-bison",
-                max_tokens=2048,
+            self.ollama_chat_model = ChatOllama(
+                model=OLLAMA_MODEL,
+                temperature=self.temperature,
             )
-
-            # Chat models
-            self.palm_chat_model = ChatVertexAI(
-                project=GCP_PROJECT_ID,
-                model_name="chat-bison",
-                max_tokens=2048,
-            )
-
-            # Embedding models
-            self.palm_embeddings = VertexAIEmbeddings(
-                project=GCP_PROJECT_ID,
-                model_name="textembedding-gecko-multilingual@latest",
-            )
+            logger.info("Ollama models initialized successfully")
         except Exception as e:
-            logger.error(f"Failed to initialize Vertex AI models: {e}")
+            logger.error(f"Failed to initialize Ollama models: {e}")
 
     def _init_gemini_models(self):
-        """Initialize Google Generative AI (Gemini) models"""
         try:
-            # Vertex AI Gemini
-            self.gemini_llm = VertexAI(
-                project=GCP_PROJECT_ID,
-                model_name="gemini-pro",
-                max_tokens=2048,
+            self.gemini_chat_model = ChatGoogleGenerativeAI(
+                model=GEMINI_MODEL,
+                temperature=self.temperature,
+                google_api_key=GEMINI_API_KEY,
             )
-
-            self.gemini_chat_model = ChatVertexAI(
-                project=GCP_PROJECT_ID,
-                model_name="gemini-pro",
-                convert_system_message_to_human=True,
-            )
-
-            # Direct Gemini API models
-            self.gemini_gen_chat_model = ChatGoogleGenerativeAI(
-                google_api_key=GOOGLE_API_KEY,
-                model="gemini-pro",
-                max_tokens=2048,
-            )
-
-            self.gemini_vision_model = ChatGoogleGenerativeAI(
-                google_api_key=GOOGLE_API_KEY,
-                model="gemini-pro-vision",
-            )
+            logger.info("Gemini model initialized successfully")
         except Exception as e:
-            logger.error(f"Failed to initialize Gemini models: {e}")
+            logger.error(f"Failed to initialize Gemini model: {e}")
 
     def get_default_llm(self):
-        """Get the default LLM for general text generation"""
-        return self.gemini_chat_model  # You can change the default as needed
+        return self.gemini_chat_model
 
-    def get_vision_model(self):
-        """Get the model for vision tasks"""
-        return self.gemini_vision_model
+    def get_openai_chat_llm(self):
+        return self.openai_chat_model
 
-    def get_embedding_model(self):
-        """Get the model for embeddings"""
-        return self.palm_embeddings
+    def get_ollama_chat_llm(self):
+        return self.ollama_chat_model
+
+    def get_gemini_chat_llm(self):
+        return self.gemini_chat_model
