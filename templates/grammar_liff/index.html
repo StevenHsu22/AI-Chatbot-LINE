@@ -16,14 +16,15 @@
     </div>
     
     <!-- クリアボタン（テキストがある場合のみ表示） -->
-    <div id="clear-btn" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer hidden">
+    <div id="clear-btn" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 cursor-pointer hidden z-10">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </div>
     
     <!-- 文法入力フィールド -->
-    <input type="text" id="grammar-input" placeholder="例：〜ている" class="w-full pl-10 pr-10 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-md" />
+    <input type="text" id="grammar-input" placeholder="例：〜ている" 
+        class="w-full pl-10 pr-12 py-2 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-md" />
   </div>
   
   <!-- 生成ボタン（深い青色の円形、カスタム画像） -->
