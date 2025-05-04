@@ -12,3 +12,7 @@
 2025-05-04 19:41:48,928 - utils.logger - INFO - Gemini model initialized successfully
 2025-05-04 19:41:48,928 - utils.logger - INFO - LLMClient initialized successfully
 2025-05-04 19:42:30,515 - utils.logger - INFO - Grammar analysis result: title='っぽい' description='名詞、動詞のます形、い形容詞の語幹などに接続し、「〜のように見える」「〜のような感じがする」「〜の性質を強く持っている」という意味を表します。見た目や感覚に基づいた判断や、あるものの典型的な特徴を表す場合に使われます。話し言葉でよく使われ、少し否定的なニュアンスを含むこともあります。' example='彼は子供っぽいところがたくさんある。' connection='名詞 + っぽい\n動詞のます形 + っぽい\nい形容詞の語幹 + っぽい\nな形容詞の語幹 + っぽい' synonyms='〜みたい、〜らしい' memo='話し言葉でよく使われるくだけた表現です。「〜らしい」が客観的な根拠や伝聞に基づくのに対し、「〜っぽい」は見た目や感覚に基づく主観的な判断を表すことが多いです。また、「〜らしい」が良い意味でも使われるのに対し、「〜っぽい」は否定的なニュアンスで使われることも少なくありません（例：安っぽい）。'
+2025-05-04 19:52:28,059 - utils.logger - INFO - OpenAI models initialized successfully
+2025-05-04 19:52:28,067 - utils.logger - INFO - Ollama models initialized successfully
+2025-05-04 19:52:28,085 - utils.logger - INFO - Gemini model initialized successfully
+2025-05-04 19:52:28,085 - utils.logger - INFO - LLMClient initialized successfully

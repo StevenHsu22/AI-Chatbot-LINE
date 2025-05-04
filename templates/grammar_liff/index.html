@@ -6,8 +6,8 @@
 <h1 class="text-2xl font-bold mb-6 text-blue-800 text-center">文法の登録</h1>
 
 <!-- 文法入力欄 -->
-<div class="relative flex items-center mb-6">
-  <div class="relative flex-grow">
+<div class="relative flex items-center gap-2 mb-6">
+  <div class="flex-grow">
     <!-- 検索アイコン（常に表示） -->
     <div class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -27,7 +27,7 @@
   </div>
   
   <!-- 生成ボタン（深い青色の円形、カスタム画像） -->
-  <button id="generate-btn" class="ml-2 bg-blue-800 hover:bg-blue-900 text-white rounded-full w-8 h-8 flex items-center justify-center transition shadow-md">
+  <button id="generate-btn" class="ml-2 bg-blue-800 hover:bg-blue-900 text-white rounded-full flex-shrink-0 w-10 h-10 flex items-center justify-center transition shadow-md">
     <!-- 通常時の画像 -->
     <img id="btn-normal-img" src="/static/icon/magic_wand.png" alt="生成" class="h-5 w-5" />
     
