@@ -8,19 +8,22 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./data:/app/data
-      - ./logs:/app/logs
+      - ./data/logs:/app/data/logs
+      - ./static:/app/static
+      - ./templates:/app/templates
     env_file:
       - .env
-    depends_on:
-      - redis
+    command: sh scripts/deploy.sh
+    # depends_on:
+    #   - redis
 
-  redis:
-    image: redis:alpine
-    container_name: line-llm-bot-redis
-    restart: always
-    volumes:
-      - redis-data:/data
+# 可選 Redis 配置
+#   redis:
+#     image: redis:alpine
+#     container_name: line-llm-bot-redis
+#     restart: always
+#     volumes:
+#       - redis-data:/data
 
-volumes:
-  redis-data:
+# volumes:
+#   redis-data:

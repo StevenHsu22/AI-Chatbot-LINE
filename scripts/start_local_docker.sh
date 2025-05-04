@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Check if .env file exists
 if [ ! -f .env ]; then
@@ -7,5 +7,5 @@ if [ ! -f .env ]; then
     exit 1
 fi
 
-echo "Starting FastAPI server..."
-uvicorn app:app --host 0.0.0.0 --port 8000
+echo "Starting docker compose..."
+docker compose up -d
