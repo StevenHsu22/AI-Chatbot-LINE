@@ -29,7 +29,7 @@ Supports uploading and parsing PDF documents as potential reading practice mater
 
 ## Setup & Usage
 
-Visit the wiki for [Setup](https://github.com/StevenHsu22/AI-Chatbot-LINE/wiki)
+Visit the wiki for [Setup & Usage](https://github.com/StevenHsu22/AI-Chatbot-LINE/wiki)
 
 ## Directory structure
 
