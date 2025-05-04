@@ -27,7 +27,7 @@
   </div>
   
   <!-- 生成ボタン（深い青色の円形、カスタム画像） -->
-  <button id="generate-btn" class="ml-2 bg-blue-800 hover:bg-blue-900 text-white rounded-full w-10 h-10 flex items-center justify-center transition shadow-md">
+  <button id="generate-btn" class="ml-2 bg-blue-800 hover:bg-blue-900 text-white rounded-full w-8 h-8 flex items-center justify-center transition shadow-md">
     <!-- 通常時の画像 -->
     <img id="btn-normal-img" src="/static/icon/magic_wand.png" alt="生成" class="h-5 w-5" />
     
@@ -74,6 +74,12 @@
       保存
     </button>
   </form>
+  <!-- 保存中ローディングオーバーレイ -->
+  <div id="saving-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+    <div class="bg-white rounded-2xl px-6 py-4 shadow-lg text-blue-700 font-semibold text-lg">
+      保存中...
+    </div>
+  </div>
 
   <p id="message" class="text-center mt-4 text-green-600 font-semibold hidden">保存しました！</p>
 </div>
@@ -158,6 +164,9 @@
       memo: document.getElementById("memo").value,
     };
 
+    const savingOverlay = document.getElementById("saving-overlay");
+    savingOverlay.classList.remove("hidden");
+
     try {
       const response = await fetch("/api/grammar/save_grammar", {
         method: "POST",
@@ -182,6 +191,8 @@
       }
     } catch (error) {
       alert("通信エラー：" + error);
+    } finally {
+      savingOverlay.classList.add("hidden");
     }
   });
 
